@@ -120,7 +120,7 @@ function App() {
                   </div>
               }
 
-              <div className=" max-w-[95%] mx-auto w-full h-full p-4 py-40 md:py-20 md:my-4"
+              <div className=" max-w-[95%] mx-auto w-full h-full p-4 py-[120px] md:py-20 md:my-4"
                    style={{display: data.main ? 'block' : 'none'}}>
                 <div>
                   <p className="text-2xl tracking-widest">
