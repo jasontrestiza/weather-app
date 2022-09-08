@@ -92,19 +92,35 @@ function App() {
               : null
               }
 
-              <div className="flex flex-row justify-center items-center m-auto w-full h-screen">
-                <input 
-                  className="rounded-full m-auto py-2 px-4 bg-white/40 text-black/40 outline-transparent w-[90%]  
-                           focus:outline-orange-500/40 focus:outline-none md:w-[70%] placeholder:text-black/40" 
-                  type="text" 
-                  placeholder="Search location.."
-                  name="city" 
-                  onChange={handleChange}
-                  onKeyPress={searchLocation}
-                />
-              </div>
+              {
+                data.main
+                ? 
+                  <div className="flex justify-center items-center m-auto w-full h-full p-4">
+                    <input 
+                      className="rounded-full m-auto py-2 px-4 bg-white/40 text-black/40 outline-transparent w-[90%]  
+                              focus:outline-orange-500/40 focus:outline-none md:w-[70%] placeholder:text-black/40" 
+                      type="text" 
+                      placeholder="Search location.."
+                      name="city" 
+                      onChange={handleChange}
+                      onKeyPress={searchLocation}
+                      />
+                  </div>
+                : 
+                  <div className="flex justify-center items-center m-auto w-full h-screen p-4">
+                    <input 
+                      className="rounded-full m-auto py-2 px-4 bg-white/40 text-black/40 outline-transparent w-[90%]  
+                              focus:outline-orange-500/40 focus:outline-none md:w-[70%] placeholder:text-black/40" 
+                      type="text" 
+                      placeholder="Search location.."
+                      name="city" 
+                      onChange={handleChange}
+                      onKeyPress={searchLocation}
+                      />
+                  </div>
+              }
 
-              <div className="w-full h-full my-4 mx-auto p-4 py-40 md:py-20"
+              <div className=" max-w-[95%] mx-auto w-full h-full p-4 py-40 md:py-20 md:my-4"
                    style={{display: data.main ? 'block' : 'none'}}>
                 <div>
                   <p className="text-2xl tracking-widest">
@@ -112,7 +128,7 @@ function App() {
                       data.name 
                     
                     }
-                  <span className="text-sm text-gray-300 ">,{data.name ? data.sys?.country : null}</span>
+                  <span className="text-sm text-center text-gray-300 ">,{data.name ? data.sys?.country : null}</span>
                   </p>
                 </div>
                 <div>
@@ -132,36 +148,40 @@ function App() {
                 </div>
               </div>
 
-              {data.main ? 
-                <div className="flex justify-evenly text-center w-full p-4 rounded-full 
+              {
+              data.main 
+              ? 
+                <div className=" justify-evenly text-center w-full py-4 rounded-full 
                                 bg-gradient-to-r from-orange-500/20 to-red-700/20 md:mx-auto md:w-[60%]"
                      style={{display: data.main ? 'flex' : 'none'}}>
-                  <div>
+                    <div>
+                      {
+                        data.main
+                        ? <p className="border-b border-orange-700/60 font-bold text-xl text-amber-500">{data.main.feels_like.toFixed()}&deg;C</p>
+                        : null
+                      }
+                      <p className="text-sm text-amber-500">Feels Like</p>
+                    </div>
+                    <div>
                     {
-                      data.main
-                      ? <p className="border-b border-orange-700/60 font-bold text-xl text-amber-500">{data.main.feels_like.toFixed()}&deg;C</p>
-                      : null
-                    }
-                    <p className="text-sm text-amber-500">Feels Like</p>
-                  </div>
-                  <div>
-                  {
-                      data.main
-                      ? <p className="border-b border-orange-700/60 font-bold text-xl text-amber-500">{data.main.humidity}%</p>
-                      : null
-                    }
-                    <p className="text-sm text-amber-600">Humidity</p>
-                  </div>
-                  <div>
-                    {
-                      data.wind
-                      ? <p className="border-b border-orange-700/60 font-bold text-xl text-amber-700">{data.wind.speed}mph</p>
-                      : null
-                    }
-                    <p className="text-sm text-amber-700">Wind Speed</p>
-                  </div>
+                        data.main
+                        ? <p className="border-b border-orange-700/60 font-bold text-xl text-amber-500">{data.main.humidity}%</p>
+                        : null
+                      }
+                      <p className="text-sm text-amber-600">Humidity</p>
+                    </div>
+                    <div>
+                      {
+                        data.wind
+                        ? <p className="border-b border-orange-700/60 font-bold text-xl text-amber-700">{data.wind.speed}mph</p>
+                        : null
+                      }
+                      <p className="text-sm text-amber-700">Wind Speed</p>
+                    </div>
                 </div>
-              : null}
+                
+              : null
+              }
 
           </div>
           
